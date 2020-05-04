@@ -14,6 +14,8 @@ class PinEntryTextField extends StatefulWidget {
   final Color borderColor;
   final Color focusedBorderColor;
   final Color textColor;
+  final Color fillColor;
+  final bool isFilled;
 
   PinEntryTextField(
       {this.lastPin,
@@ -25,7 +27,9 @@ class PinEntryTextField extends StatefulWidget {
       this.showFieldAsBox: false,
       this.borderColor: Colors.black,
       this.focusedBorderColor,
-      this.textColor: Colors.black})
+      this.textColor: Colors.black, 
+      this.fillColor,
+      this.isFilled})
       : assert(fields > 0);
 
   @override
@@ -120,6 +124,8 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
         obscureText: widget.isTextObscure,
         decoration: InputDecoration(
             counterText: "",
+            filled: widget.isFilled,
+            fillColor: widget.fillColor,
             border: widget.showFieldAsBox
                 ? OutlineInputBorder(borderSide: BorderSide(width: 2.0, color: widget.borderColor))
                 : UnderlineInputBorder(borderSide: BorderSide(width: 2.0, color: widget.borderColor)),
